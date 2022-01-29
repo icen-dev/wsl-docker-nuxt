@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+      - "9005:9005"
+    working_dir: "/web"
+    volumes:
+      - ./../web:/web
+      - node_modules_volume:/node_modules
+    tty: true
+    environment:
+    - CHOKIDAR_USEPOLLING=true
+volumes:
+  node_modules_volume:
